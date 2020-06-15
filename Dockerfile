@@ -1,4 +1,3 @@
-# Keep this version in sync with Gradle Wrapper's version.
 FROM gradle:6.1-jdk11 as build
 
 COPY --chown=gradle:gradle . /home/gradle/edu-car/car
