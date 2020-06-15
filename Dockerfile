@@ -1,6 +1,12 @@
-FROM ubuntu:18.04
+# Keep this version in sync with Gradle Wrapper's version.
+FROM gradle:6.1-jdk11 as build
 
-COPY . /opt/edu-car
+COPY --chown=gradle:gradle . /home/gradle/edu-car/car
+WORKDIR /home/gradle/edu-car/car
+RUN gradle installDist --no-daemon
 
-CMD /opt/edu-car/hello.sh
+FROM openjdk:11-jre
 
+COPY --from=build /home/gradle/edu-car/car/build/install/educar /opt/edu-car
+
+CMD /opt/edu-car/bin/educar
