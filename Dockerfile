@@ -8,4 +8,6 @@ FROM openjdk:11-jre
 
 COPY --from=build /home/gradle/edu-car/car/build/install/educar /opt/edu-car
 
+EXPOSE 8080
+
 CMD /opt/edu-car/bin/educar

@@ -9,10 +9,12 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    implementation("io.ktor:ktor-server-netty:1.3.2")
 }
 
 application {
