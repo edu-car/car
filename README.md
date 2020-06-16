@@ -1,5 +1,7 @@
 # How to test locally
 
+## With Docker
+
 ```
 docker build . -t edu-car
 docker run edu-car
@@ -21,6 +23,12 @@ To access the server:
    ```
    curl -d '{"turnedOn": true}' -H 'Content-Type: application/json' 1.2.3.4:8080/setLedState
    ```
+
+## With IDE or pure Java
+
+To some extent, the service can be tested by just running the Java app. E.g. in IntelliJ,
+a "play" button is displayed next to the `main` function. It's a convenient way to test some changes
+without involving Docker.
 
 ## Note
 
