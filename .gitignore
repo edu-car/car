@@ -1,3 +1,8 @@
 build/
 .gradle/
 .idea/
+
+# Gradle wrapper is not used so that Gradle version is specified only in Dockerfile
+gradle/
+gradlew
+gradlew.bat
