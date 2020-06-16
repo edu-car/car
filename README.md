@@ -17,7 +17,10 @@ To access the server:
    ```
    Let's say it's 1.2.3.4.
 
-3. Open the browser and go to `http://1.2.3.4:8080/hello`.
+3. Open the console and make a POST request:
+   ```
+   curl -d '{"turnedOn": true}' -H 'Content-Type: application/json' 1.2.3.4:8080/setLedState
+   ```
 
 ## Note
 

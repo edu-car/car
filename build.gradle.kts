@@ -15,6 +15,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("io.ktor:ktor-server-netty:1.3.2")
+    implementation("io.ktor:ktor-gson:1.3.2")
 }
 
 application {
