@@ -4,25 +4,16 @@
 
 ```
 docker build . -t edu-car
-docker run edu-car
+docker -p 8081:8080 run edu-car
 ```
 
 `sudo` may be needed in front of the `docker` command.
 
-To access the server:
+To call the service, open the console and make a POST request:
 
-1. Find out the container's ID by running `docker ps`. Let's say it's `foobar`
-
-2. Find out the container's IP by calling
-   ```
-   docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' foobar
-   ```
-   Let's say it's 1.2.3.4.
-
-3. Open the console and make a POST request:
-   ```
-   curl -d '{"turnedOn": true}' -H 'Content-Type: application/json' 1.2.3.4:8080/setLedState
-   ```
+```
+curl -d '{"turnedOn": true}' -H 'Content-Type: application/json' localhost:8081/setLedState
+```
 
 ## With IDE or pure Java
 
