@@ -1,10 +1,17 @@
+# Building and deploying
+
+The main image meant for Raspberry is described in `Dockerfile.rpi`.
+
 # How to test locally
 
 ## With Docker
 
+There's a separate Dockerfile for testing not on Raspberry,
+suited for regular, non-ARM architecture:
+
 ```
-docker build . -t edu-car
-docker -p 8081:8080 run edu-car
+docker build . -f Dockerfile.desktop -t edu-car
+docker run -p 8081:8080 edu-car
 ```
 
 `sudo` may be needed in front of the `docker` command.

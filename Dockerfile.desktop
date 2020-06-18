@@ -1,0 +1,19 @@
+# WARNING: this file should be in sync with Dockerfile.rpi
+# and the only difference should be in the runtime base image
+# (see the comment below). Duplication exists becuase I'm not aware of
+# a way of extracting common pieces of Docker configs to a single place.
+
+FROM gradle:6.1-jdk8 as build
+
+COPY --chown=gradle:gradle . /home/gradle/edu-car/car
+WORKDIR /home/gradle/edu-car/car
+RUN gradle installDist --no-daemon
+
+# Only the below runtime base image should differ, comparing to Dockerfile.rpi
+FROM openjdk:8-jre
+
+COPY --from=build /home/gradle/edu-car/car/build/install/educar /opt/edu-car
+
+EXPOSE 8080
+
+CMD /opt/edu-car/bin/educar

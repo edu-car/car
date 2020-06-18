@@ -1,10 +1,12 @@
-FROM gradle:6.1-jdk11 as build
+# WARNING: when making changes here, change also Dockerfile.desktop
+
+FROM gradle:6.1-jdk8 as build
 
 COPY --chown=gradle:gradle . /home/gradle/edu-car/car
 WORKDIR /home/gradle/edu-car/car
 RUN gradle installDist --no-daemon
 
-FROM openjdk:11-jre
+FROM balenalib/raspberry-pi-openjdk:8-stretch-run
 
 COPY --from=build /home/gradle/edu-car/car/build/install/educar /opt/edu-car
 
