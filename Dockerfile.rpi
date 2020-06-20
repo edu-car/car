@@ -6,11 +6,11 @@ COPY --chown=gradle:gradle . /home/gradle/edu-car/car
 WORKDIR /home/gradle/edu-car/car
 RUN gradle installDist --no-daemon
 
-FROM balenalib/raspberrypi3-alpine-openjdk:8-latest
+FROM balenalib/raspberry-pi-openjdk:8-stretch-run
 
 COPY --from=build /home/gradle/edu-car/car/build/install/educar /opt/edu-car
 
-RUN apk add wiringpi wiringpi-dev
+RUN apt-get install wiringpi
 
 EXPOSE 8080
 
