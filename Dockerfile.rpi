@@ -10,7 +10,7 @@ FROM balenalib/raspberry-pi-openjdk:8-stretch-run
 
 COPY --from=build /home/gradle/edu-car/car/build/install/educar /opt/edu-car
 
-RUN apt-get install wiringpi
+RUN apt-get update && apt-get install wiringpi
 
 EXPOSE 8080
 
